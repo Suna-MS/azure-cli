@@ -1,6 +1,10 @@
 FROM azureclidev.azurecr.io/azurecli-a01-droid:python3.6-latest
 
 COPY build /tmp/build
+COPY docker/app /tmp/app
 
-RUN find /tmp/build -name '*.whl' | xargs pip install
-
+RUN find /tmp/build -name '*.whl' | xargs pip install && \
+    python /tmp/app/collect_tests.py > /app/test_index && \
+    rm -rf /tmp/build && \
+    rm -rf /tmp/app && \
+    rm -rf ~/.cache/pip

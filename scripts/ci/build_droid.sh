@@ -27,6 +27,11 @@ $dp0/build.sh
 cp $dp0/a01/Dockerfile.py36 artifacts/
 
 #############################################
+# Move other scripts for docker
+mkdir -p artifacts/docker/app
+cp $dp0/a01/collect_tests.py artifacts/docker/app/
+
+#############################################
 # for travis repo slug, remove the suffix to reveal the owner
 # - the offical repo will generate image: azurecli-test-Azure
 # - the fork repo will generate image: azurecli-test-johnongithub
